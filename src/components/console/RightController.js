@@ -1,5 +1,4 @@
-import './Joystick';
-class LeftController extends HTMLElement {
+class RightController extends HTMLElement {
   constructor(){
     super();
     this.attachShadow({mode: 'open'});
@@ -11,10 +10,10 @@ class LeftController extends HTMLElement {
         width: var(--controller-width);
         height: 100%;
         border-radius: 5px;
-        border-top-left-radius: 70% 20%;
-        border-bottom-left-radius: 70% 20%;
-        background-color: var(--blue-color);
-        box-shadow: 1px 1px 2px white inset, -2px -1px 2px var(--blue-darken-color);
+        border-top-right-radius: 70% 20%;
+        border-bottom-right-radius: 70% 20%;
+        background-color: var(--red-color);
+        box-shadow: -1px 1px 2px white inset, 2px -1px 2px var(--blue-darken-color);
         position: relative;
         display: grid;
         grid-template-columns: 1fr;
@@ -22,46 +21,46 @@ class LeftController extends HTMLElement {
         justify-content: center;
         justify-items: center;
         align-items: center;
-        // z-index: 1;
       }
 
-      :host::before {
+      :host::after {
         width: 100%;
         height: 100%;
         content: "";
         position: absolute;
         top: -3%;
-        left: -2%;
+        right: -2%;
         background-color: black;
-        border-top-left-radius: 70% 20%;
-        border-top-right-radius: 20% 10%;
-        border-bottom-left-radius: 70% 70%;
+        border-top-right-radius: 70% 20%;
+        border-top-left-radius: 20% 10%;
+        border-bottom-right-radius: 70% 70%;
         z-index: -1;
         border: 1px solid black;
-        clip-path: polygon(5% 0, 90% 0, 90% 15%, 5% 15%);
+        clip-path: polygon(95% 0%, 95% 20%, 10% 20%, 10% 0);
       }
 
-      :host::after{
+      :host::before {
         width: 10%;
         height: 90%;
         background-color: black;
         content: "";
         position: absolute;
-        left: 100%;
-        border-radius: 0 5px 5px 0;
+        right: 100%;
+        border-radius: 5px 0 0 5px;
         z-index: -5;
+        box-shadow: -1px 0 2px black;
       }
 
-      .minus {
+      .plus {
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: end;
+        justify-content: start;
         align-items: start;
-        font-weight: bold;
-        font-size: 2em;
-        margin-inline-end: 15%;
-        margin-block-start: -15%;
+        font-weight: bolder;
+        font-size: 1.2em;
+        margin-inline-start: 10%;
+        margin-block-end: -5%;
       }
 
       .buttons {
@@ -73,7 +72,7 @@ class LeftController extends HTMLElement {
         align-items: center;
         position: relative;
       }
-
+      
       .btn{
         width: var(--button-diameter);
         height: var(--button-diameter);
@@ -84,52 +83,60 @@ class LeftController extends HTMLElement {
         justify-content: center;
         align-items: center;
         box-shadow: 1px 0 2px black;
-        position: absolute;
+        color: white;
+        font-size: var(--button-font-size);
       }
-
+      
       .btn:nth-child(1){
         grid-column: 2;
         grid-row: 1;
+        position: absolute;
         margin-block-end: 70%;
       }
       .btn:nth-child(2){
         grid-column: 3;
         grid-row: 2;
+        position: absolute;
         margin-inline-start: -15%;
-        margin-block-end: 65%;
+        margin-block-end: 70%;
       }
       .btn:nth-child(3){
         grid-column: 2;
         grid-row: 3;
-        margin-block-start: 17%;
-        margin-block-end: 24%;
+        position: absolute;
+        margin-block-end: 15%;
       }
       .btn:nth-child(4){
         grid-column: 1;
         grid-row: 2;
+        position: absolute;
         margin-inline-start: 15%;
-        margin-block-end: 24%;
+        margin-block-end: 27%;
       }
 
       .menu {
-        width: calc(var(--button-diameter) * 0.8);
-        height: calc(var(--button-diameter) * 0.8);
+        width: calc(var(--button-diameter) * 0.9);
+        height: calc(var(--button-diameter) * 0.9);
         background-color: var(--black-color);
         display: flex;
         justify-content: center;
         align-items: center;
         box-shadow: 0 0 2px black;
-        margin-inline-start: 60%;
+        margin-inline-end: 60%;
         margin-block-end: 20%;
-        border-radius: 10%;
+        background-color: gray;
+        border-radius: 50%;
       }
 
       .inner-menu {
-        width: 65%;
-        height: 65%;
-        background-color: #121212;
+        width: 80%;
+        height: 80%;
+        background-color: var(--black-color);
         border-radius: 50%;
         box-shadow: 0 0 2px black inset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     `
   }
@@ -140,18 +147,24 @@ class LeftController extends HTMLElement {
 
   render(){
     this.shadowRoot.innerHTML = /* html */`
-    <style>${LeftController.styles}</style>
-    <div class="minus">-</div>
-    <controller-joystick></controller-joystick>
+    <style>${RightController.styles}</style>
+    <div class="plus">+</div>
     <div class="buttons">
-      <button class="btn">▲</button>
-      <button class="btn">▶</button>
-      <button class="btn">▼</button>
-      <button class="btn">◀</button>
+      <button class="btn">X</button>
+      <button class="btn">A</button>
+      <button class="btn">B</button>
+      <button class="btn">Y</button>
     </div>
-    <div class="menu"><div class="inner-menu"></div></div>
+    <controller-joystick></controller-joystick>
+    <div class="menu">
+      <div class="inner-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="80%" height="80%" viewBox="0 0 24 24">
+          <path d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 10 21 L 10 14 L 14 14 L 14 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z"></path>
+        </svg>
+      </div>
+    </div>
     `
   }
 }
 
-customElements.define('left-controller',  LeftController);
+customElements.define('right-controller',  RightController);

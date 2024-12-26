@@ -1,5 +1,5 @@
-import './LeftController';
-import './RightController';
+import './console/NintendoSwitchConsole';
+import './dock/Dock';
 
 class NintendoSwitch extends HTMLElement {
   constructor(){
@@ -9,66 +9,33 @@ class NintendoSwitch extends HTMLElement {
 
   static get styles(){
     return /* css */`
-    :host{
-      --container-width: 677px;
-      --container-height: 288px;
-      // --controller-width: 94px;
-      --controller-width: 14%;
-      --controller-height: 100%;
+      :host{
+        
+      }
 
-      --controller-width: 14%;
-      --joystick-diameter: 50px;
-      --button-diameter: 23px;
-
-      --blue-color: #41bfe1;
-      --blue-darken-color: #102b33;
-      --red-color: #f25546;
-      --black-color: #2e3234;
-      --gray-color: #868383;
-    }
-
-    .container{
-      width: var(--container-width);
-      height: var(--container-height);
-      // background-color: gray;
-      display: flex;
-    }
-
-    .left-controller{
-      width: var(--controller-width);
-      height: var(--controller-height);
-      border-top-left-radius: 70% 20%;
-      border-bottom-left-radius: 70% 20%;
-      background-color: var(--blue-color);
-      box-shadow: 1px 1px 2px white inset, -2px -1px 2px var(--blue-darken-color);
-    }
-
-    .screen{
-      width: 72%;
-    }
-
-    .right-controller{
-      width: 14%;
-      background-color: green;
-      border-top-right-radius: 70% 20%;
-      border-bottom-right-radius: 70% 20%;
-      background-color: var(--red-color);
-    }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
     `
   }
 
-  connectedCallback() {
+  connectedCalback(){
     this.render();
   }
 
-  render() {
+  render(){
     this.shadowRoot.innerHTML = /* html */ `
-      <style>${NintendoSwitch.styles}</style>
-      <div class="container">
-      <left-controller></left-controller>
-      <div class="screen"></div>
-      <right-controller></right-controller>
-      </div>
+    <style>${NintendoSwitch.styles}</style>
+    <h1>Hola</h1>
+    <div class="container">
+      <nintendo-switch-console></nintendo-switch-console>
+      <docking-station></docking-station>
+    </div>
     `
   }
 }
