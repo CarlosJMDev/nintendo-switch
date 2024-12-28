@@ -14,7 +14,6 @@ class Dock extends HTMLElement {
       --container-height: 288px;
 
       --top-height: 19.5px;
-
       --image-height: 212px;
 
       --blue-color: #41bfe1;
@@ -50,15 +49,12 @@ class Dock extends HTMLElement {
       width: calc(var(--container-width-1) * .9);
       height: var(--container-height);
       background-color: var(--black-color);
-
       position: absolute;
       top: -25%;
-
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 6px;
-
       margin-block-start: 2.3rem;
       z-index: -1
     }
@@ -76,11 +72,50 @@ class Dock extends HTMLElement {
       z-index: 1;
     }
 
+    .light {
+      position: absolute;
+      left: 0;
+      bottom: 14%;
+      width: 3%;
+      height: 2%;
+      background-color: black;
+    }
+    
+    .animation-light {
+      animation: ChangeOfLight 8s ease-in-out infinite;
+    }
+
+    @keyframes ChangeOfLight {
+      0%{
+        background-color: black;
+      }
+      50%{
+        background-color: green;
+        box-shadow: 0 0 8px green;
+      }
+      70%{
+        box-shadow: 0 0 8px green;
+        background-color: green;
+      }
+      100%{
+        background-color: black;
+      }
+    }
     `
   }
 
   connectedCallback() {
     this.render();
+
+    const light = this.shadowRoot.getElementById("light");
+
+    setInterval(() => {
+      light.classList.add('animation-light');
+      
+      setTimeout(() => {
+        light.classList.remove('animation-light');
+      }, 8000);
+    }, 12000);
   }
 
   render() {
@@ -92,6 +127,7 @@ class Dock extends HTMLElement {
         </div>
         <div class="container-front">
           <dock-front-top style="--container-width: var(--container-width-1);"></dock-front-top>
+          <div id="light" class="light"></div>
           <picture class="image">
             <source srcset="/Nintendo-Switch-Logo.avif" type="image/avif">
             <source srcset="/Nintendo-Switch-Logo.webp" type="image/webp">

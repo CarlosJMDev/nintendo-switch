@@ -10,7 +10,6 @@ class NintendoSwitch extends HTMLElement {
   static get styles(){
     return /* css */`
       :host{
-        
       }
 
       .container {
@@ -19,13 +18,12 @@ class NintendoSwitch extends HTMLElement {
         justify-content: center;
         align-items: center;
       }
-
-      .console{
-        animation: ChargeNintendo 8s ease-in-out infinite;
+      
+      .animation-console {
+        animation: animation-console 8s ease-in-out infinite;
       }
 
-
-      @keyframes ChargeNintendo {
+      @keyframes animation-console {
         0%{
           transform: translate(0, 0);
         }
@@ -41,7 +39,7 @@ class NintendoSwitch extends HTMLElement {
       }
 
       @media (max-width: 768px) {
-        @keyframes ChargeNintendo {
+        @keyframes animation-console {
           0%{
             transform: translate(0, 0);
           }
@@ -65,13 +63,23 @@ class NintendoSwitch extends HTMLElement {
 
   connectedCallback(){
     this.render();
+
+    const console = this.shadowRoot.getElementById("console");
+
+    setInterval(() => {
+      console.classList.add('animation-console');
+
+      setTimeout(() => {
+        console.classList.remove('animation-console');
+      }, 8000);
+    }, 12000);
   }
 
   render(){
     this.shadowRoot.innerHTML = /* html */ `
     <style>${NintendoSwitch.styles}</style>
     <div class="container">
-      <div class="console">
+      <div id="console" class="console">
         <nintendo-switch-console></nintendo-switch-console>
       </div>
       <div class="dock">
