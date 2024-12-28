@@ -1,5 +1,6 @@
 import './LeftController';
 import './RightController';
+import './TopScreen';
 
 class NintendoSwitchConsole extends HTMLElement {
   constructor(){
@@ -12,23 +13,22 @@ class NintendoSwitchConsole extends HTMLElement {
     :host{
       --container-width: 677px;
       --container-height: 288px;
-
       --controller-width: 14%;
       --controller-height: 100%;
-
+      --top-width: 477px;
+      --top-height: 35px;
       --image-width: 412px;
       --joystick-diameter: 50px;
       --button-diameter: 23px;
-
       --button-font-size: .8rem;
-
+      
       --blue-color: #41bfe1;
       --blue-darken-color: #102b33;
       --red-color: #f25546;
       --black-color: #2e3234;
       --gray-color: #868383;
     }
-
+    
     @media (max-width: 768px) {
       :host {
         --container-width: 508px;
@@ -37,6 +37,8 @@ class NintendoSwitchConsole extends HTMLElement {
         --button-diameter: 18px;
         --image-width: 288px;
         --button-font-size: .7rem;
+        --top-width: 357px;
+        --top-height: 25px;
       }
     }
 
@@ -76,14 +78,12 @@ class NintendoSwitchConsole extends HTMLElement {
       position: absolute;
       top: -.3%;
     }
-
     .screen::before {
       left: -.2%;
       border-radius: 0 0 10px 0;
       border-right: 1px solid black;
       border-bottom: 1px solid black;
     }
-    
     .screen::after {
       right: -.2%;
       border-radius: 0 0 0 10px;
@@ -129,6 +129,7 @@ class NintendoSwitchConsole extends HTMLElement {
       <div class="container">
       <left-controller></left-controller>
       <div class="screen">
+        <top-screen></top-screen>
         <div class="black-screen">
           <picture class="image">
             <source srcset="/homemenu.avif" type="image/avif">

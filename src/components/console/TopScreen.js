@@ -1,4 +1,4 @@
-class DockFrontTop extends HTMLElement {
+class TopScreen extends HTMLElement {
   constructor(){
     super();
     this.attachShadow({mode: 'open'});
@@ -8,20 +8,19 @@ class DockFrontTop extends HTMLElement {
     return /* css */`
     :host{
       position: absolute;
-        top: -6.6%;
-        perspective: 400px;
+        top: -12%;
+        perspective: 1000px;
         transform-style: preserve-3d;
     }
 
     .container{
-      width: calc(var(--container-width) * .98);
+      width: calc(var(--top-width) * .98);
       height: var(--top-height);
       background-color: var(--black-color);
-      background-image: url("https://www.transparenttextures.com/patterns/black-orchid.png");
       border-radius: 5px 5px 0 0;
       transform-origin: 50% 100%;
       transform: rotateX(75deg);
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: -1px 0 4px rgba(255, 255, 255, 0.5) inset;
       position: relative;
     }
     `
@@ -33,11 +32,11 @@ class DockFrontTop extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = /* html */ `
-      <style>${DockFrontTop.styles}</style>
+      <style>${TopScreen.styles}</style>
       <div class="container">
       </div>
     `
   }
 }
 
-customElements.define('dock-front-top', DockFrontTop);
+customElements.define('top-screen', TopScreen);

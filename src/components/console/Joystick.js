@@ -1,4 +1,3 @@
-
 class Joystick extends HTMLElement {
   constructor(){
     super();
@@ -37,7 +36,6 @@ class Joystick extends HTMLElement {
         background-color: var(--black-color);
         position: absolute;
       }
-
       .inner-line:nth-child(2) {
         top: 9%;
         rotate: 90deg;
