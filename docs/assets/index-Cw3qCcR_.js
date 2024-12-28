@@ -484,9 +484,9 @@
         <top-screen></top-screen>
         <div class="black-screen">
           <picture class="image">
-            <source srcset="/homemenu.avif" type="image/avif">
-            <source srcset="/homemenu.webp" type="image/webp">
-            <img src="/homemenu.jpg" alt="" type="image.jpeg" style="width: var(--image-width);">
+            <source srcset="./homemenu.avif" type="image/avif">
+            <source srcset="./homemenu.webp" type="image/webp">
+            <img src="./homemenu.jpg" alt="" type="image.jpeg" style="width: var(--image-width);">
           </picture>
         </div>
       </div>
@@ -619,9 +619,9 @@
           <dock-front-top style="--container-width: var(--container-width-1);"></dock-front-top>
           <div id="light" class="light"></div>
           <picture class="image">
-            <source srcset="/Nintendo-Switch-Logo.avif" type="image/avif">
-            <source srcset="/Nintendo-Switch-Logo.webp" type="image/webp">
-            <img src="/Nintendo-Switch-Logo.jpg" alt="" type="image.jpeg" style="height: var(--image-height); opacity: .9;">
+            <source srcset="./Nintendo-Switch-Logo.avif" type="image/avif">
+            <source srcset="./Nintendo-Switch-Logo.webp" type="image/webp">
+            <img src="./Nintendo-Switch-Logo.jpg" alt="" type="image.jpeg" style="height: var(--image-height); opacity: .9;">
           </picture>
         </div>
       </div>
